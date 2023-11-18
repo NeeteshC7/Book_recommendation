@@ -5,6 +5,9 @@ from src.logger import logging
 import pandas as pd
 
 from dataclasses import dataclass
+import pdb
+from src.utils import save_object_to_file
+from src.components.recommender import RecommenderTrainingConfig, RecommenderTrainer
 
 @dataclass
 class DataIngestionConfig:
@@ -26,6 +29,8 @@ class DataIngestion:
             # Read the Books.csv file
             books_dtype = {'Year-Of-Publication': str}
             books = pd.read_csv('notebook/data/Books.csv', dtype=books_dtype)
+            mask = (books['Year-Of-Publication'] == 'DK Publishing Inc') | (books['Year-Of-Publication'] == 'Gallimard')
+            books = books[~mask]
 
             # Read the Ratings.csv file
             ratings = pd.read_csv("notebook/data/Ratings.csv")
@@ -56,5 +61,8 @@ class DataIngestion:
 
 if __name__=="__main__":
     obj=DataIngestion()
-    book_data, ratings_data, user_data = obj.initiate_data_ingestion()
-    print("Data paths:", book_data, ratings_data, user_data)
+    book_path, ratings_path, user_path = obj.initiate_data_ingestion()
+    print("Data paths:", book_path, ratings_path, user_path)
+
+    recommender_trainer = RecommenderTrainer()  
+    recommender_trainer.initiate_recommender_trainer(book_path, ratings_path, user_path)
