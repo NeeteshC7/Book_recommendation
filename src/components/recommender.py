@@ -13,6 +13,7 @@ import pdb
 class RecommenderTrainingConfig:
     popularity_filepath = os.path.join("artifacts", "popularity.pkl")
     books_filepath = os.path.join("artifacts", "books.pkl")
+    collaborative_recommender_filepath = os.path.join("artifacts", "collaborative_recommender.pkl")
     similarity_scores_filepath = os.path.join("artifacts", "similarity_scores.pkl")
 
 class RecommenderTrainer:
@@ -60,6 +61,11 @@ class RecommenderTrainer:
             save_object_to_file(
                 file_path=self.training_config.similarity_scores_filepath,
                 obj=similarity_scores
+            )
+
+            save_object_to_file(
+                file_path=self.training_config.collaborative_recommender_filepath,
+                obj=collaborative_filter
             )
 
 

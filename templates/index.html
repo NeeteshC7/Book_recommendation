@@ -4,14 +4,21 @@
 
 
 <body>
-    <div class="mx-3">
-    <h1 class="display-3">Book recommender system</h1>
-    <p class="lead">
-        Welcome to our Flask-based Books Recommendation App! </p>
-    <hr class="my-8">
-   
- </div>
-   
+    <div id="card-container">
+        <div class="mx-3">
+            <h1 class="display-3">Book recommender system</h1>
+            <p class="lead">
+                Welcome to our Flask-based Books Recommendation App! </p>
+            <hr class="my-8">
+
+        </div>
+
+    </div>
+
+
+    <div id="image-container">
+        <img id="book-image" src="{{ url_for('static', filename='books.jpg') }}" alt="Books Image">
+    </div>
 
 
 </body>

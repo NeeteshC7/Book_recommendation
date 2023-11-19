@@ -15,11 +15,30 @@ def index():
 
 @app.route('/popularbooks' ,methods=[ 'get','post'])
 def popular():
-    predict_pipeline=PredictPipeline()
-    book_name, author, image, votes, rating,year_publish = predict_pipeline.predict()
+    top_predict_pipeline=PredictPipeline()
+    book_name, author, image, votes, rating,year_publish = top_predict_pipeline.predict_popular()
     #print(book_name)
     return render_template('popular.html', book_name=book_name, author=author, image=image, votes=votes, rating=rating, year_publish=year_publish)
 
+
+@app.route('/recommend',methods=['GET','POST'])
+def cf_recommend():
+    if request.method == 'GET':
+        return render_template('recommend.html')
+    else:
+        userInput = request.form.get('userInput')
+        predict_pipeline=PredictPipeline()
+        data = predict_pipeline.predict_collaborative(userInput)
+        return render_template('recommend.html', data=data)
+
+
+
+
+
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 if __name__=="__main__":
     app.run(host="0.0.0.0", debug=True) 

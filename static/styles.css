@@ -1,0 +1,13 @@
+#book-image {
+  width: 700px;
+  border-radius: 2%;
+  padding-right: 40px;
+  } 
+#image-container {
+    text-align: right;
+  }
+
+  /* styles.css */
+  body {
+    background-color: #f8e6cb;
+  }
