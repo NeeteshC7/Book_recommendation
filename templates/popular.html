@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<body>
+    <div class="mx-3">
+        <h1 class="display-3">Top 50 books</h1>
+        <p class="lead">
+            Welcome to our Flask-based Books Recommendation App!
+        </p>
+        <hr class="my-8">
+
+        <div class="row">
+            {% for i in range(book_name|length) %}
+            <div class="col-md-2 mx-4" style="margin-top: 30px">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="card-img-top" src="{{ image[i] }}">
+                        <h5 class="text">{{ book_name[i] }}</h5>
+                        <h5 class="text">{{ author[i] }}</h5>
+                        <h5 class="text">Rating - {{ '%.2f' % (rating[i] | float) }}</h5>
+                        <h5 class="text">Votes - {{ votes[i] }}</h5>
+                        <h5 class="text">Year Published - {{ year_publish[i] }}</h5>
+                    </div>
+                </div>
+            </div>
+            {% if loop.index % 5 == 0 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+{% endblock body %}

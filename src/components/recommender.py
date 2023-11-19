@@ -5,13 +5,15 @@ import pandas as pd
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object_to_file
+from sklearn.metrics.pairwise import cosine_similarity
 import pdb
 
 
 @dataclass
 class RecommenderTrainingConfig:
     popularity_filepath = os.path.join("artifacts", "popularity.pkl")
-   # collaborative_filepath = os.path.join("artifacts", "collaborative.pkl")
+    books_filepath = os.path.join("artifacts", "books.pkl")
+    similarity_scores_filepath = os.path.join("artifacts", "similarity_scores.pkl")
 
 class RecommenderTrainer:
     def __init__(self):
@@ -34,12 +36,39 @@ class RecommenderTrainer:
             popular_df = num_of_rating_df.merge(avg_rating_df,on='Book-Title')
             popularity_recommender = popular_df[popular_df['num_of_ratings']>=250].sort_values('avg_rating',ascending=False).head(50)
             popularity_recommender = popularity_recommender.merge(books,on='Book-Title').drop_duplicates('Book-Title')[['Book-Title','Book-Author','Year-Of-Publication','Image-URL-M','num_of_ratings','avg_rating' ]]
+            popularity_recommender = popularity_recommender.drop_duplicates(subset='Book-Title')
+
+            logging.info("Succesfully built popularity recommender")
+            logging.info("Start Building Collaborative filtering recommender")
+            user_ratings_count = rating_book_name['User-ID'].value_counts()
+            user_ids = user_ratings_count[user_ratings_count > 200].index.tolist()
+            filtered_rating = rating_book_name[rating_book_name['User-ID'].isin(user_ids)]
+            book_ratings_count = filtered_rating['Book-Title'].value_counts()
+            selected_books = book_ratings_count[book_ratings_count >= 50].index.tolist()
+            final_filtered_ratings = filtered_rating[filtered_rating['Book-Title'].isin(selected_books)]
+            collaborative_filter = final_filtered_ratings.pivot_table(index='Book-Title',columns='User-ID',values='Book-Rating')
+            collaborative_filter.fillna(0,inplace=True)
+            similarity_scores = cosine_similarity(collaborative_filter)
+
+            logging.info("Succesfully built the Collaborative recommender ")
+            
+            save_object_to_file(
+                file_path=self.training_config.books_filepath,
+                obj=books
+            )
+            
+            save_object_to_file(
+                file_path=self.training_config.similarity_scores_filepath,
+                obj=similarity_scores
+            )
+
 
             save_object_to_file(
                 file_path=self.training_config.popularity_filepath,
                 obj=popularity_recommender
             )
-            logging.info("Succesfully built popularity recommender")
+            logging.info("Saved pickle files")
+
             return 0
         
         except Exception as e:
