@@ -10,32 +10,33 @@
 
     </div>
 
-    <form  method="post"> 
+    <form method="post">
         <div class="col-md-8 mx-4">
             <div class="form-group">
                 <label for="userInput">Enter book name</label>
-                <input type="text" class="form-control" name="userInput" placeholder="Click Submit after entering book name">
+                <input type="text" class="form-control" name="userInput"
+                    placeholder="Click Submit after entering book name">
             </div>
-            <button type="submit" class="btn btn-info" style="background-color: #5193b3;" >Submit</button>
+            <button type="submit" class="btn btn-info" style="background-color: #5193b3;">Submit</button>
         </div>
     </form>
 
     <div class="row" method="post">
-    {% if data %}
+        {% if data %}
         {% for i in data %}
         <div class="col-md-2 mx-4" style="margin-top: 30px; margin-bottom: 30px;">
             <div class="card w-100" style="height:500px">
-                    <div class="card-body">
-                        <img class="card-img-top" src="{{ i[3] }}">
-                        <h5 class="text">{{ i[0] }}</h5>
-                        <h6 class="text-muted">By {{ i[1] }} </h6>
-                        <h6><small class="text">Year Published - {{ i[2] }}</small></h6> 
-                    </div>
+                <div class="card-body">
+                    <img class="card-img-top" src="{{ i[3] }}">
+                    <h5 class="text">{{ i[0] }}</h5>
+                    <h6 class="text-muted">By {{ i[1] }} </h6>
+                    <h6><small class="text">Year Published - {{ i[2] }}</small></h6>
                 </div>
             </div>
+        </div>
         {% endfor %}
     </div>
-{% endif %}
+    {% endif %}
 
 
 

@@ -13,20 +13,7 @@ class PredictPipeline:
     def predict_popular(self):
         try:
             popular_df_path = os.path.join("artifacts", "popularity.pkl")
-
-            # Return the desired values
             popular_df=load_object(file_path=popular_df_path)
-
-            #Replace images for images whose links aren't working
-            # titles_to_replace = ["The Hitchhiker's Guide to the Galaxy", 'Outlander', 'The Color Purple']
-
-            # # Define the new URL
-            # new_image_url = 'http://images.amazon.com/images/P/0345339711.01.MZZZZZZZ.jpg'
-
-            # # Update Image-URL-M column for specified titles
-            # popular_df.loc[popular_df['Book-Title'].isin(titles_to_replace), 'Image-URL-M'] = new_image_url
-
-
             book_name = popular_df["Book-Title"].values.tolist()
             author = popular_df["Book-Author"].values.tolist()
             image = popular_df["Image-URL-M"].values.tolist()
@@ -34,13 +21,10 @@ class PredictPipeline:
             rating = popular_df["avg_rating"].values.tolist()
             year_publish = popular_df["Year-Of-Publication"].values.tolist()
 
- 
-
             return book_name, author, image, votes, rating,year_publish
         
         except Exception as e:
-            raise CustomException(e,sys)
-        
+            raise CustomException(e,sys)        
     
     def predict_collaborative(self, book_name):
         try:
@@ -48,11 +32,9 @@ class PredictPipeline:
             similarity_scores_path =os.path.join("artifacts", "similarity_scores.pkl")
             collaborative_recommender_path = os.path.join("artifacts", "collaborative_recommender.pkl")
 
-
             books=load_object(file_path=books_path)
             similarity_scores=load_object(file_path=similarity_scores_path)
             recommender=load_object(file_path=collaborative_recommender_path)
-
 
             index = np.where(recommender.index==book_name)[0][0]
             similar_items = sorted(enumerate(similarity_scores[index]), key=lambda x: x[1], reverse=True)[1:11]
@@ -66,7 +48,6 @@ class PredictPipeline:
                 item.extend(list(temp_df.drop_duplicates('Book-Title')['Image-URL-M'].values))
                 recommended_books.append(item)
             return recommended_books
-
 
         except Exception as e:
             raise CustomException(e,sys)

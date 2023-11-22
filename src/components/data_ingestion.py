@@ -33,19 +33,13 @@ class DataIngestion:
             mask = (books['Year-Of-Publication'] == 'DK Publishing Inc') | (books['Year-Of-Publication'] == 'Gallimard')
             books = books[~mask]
 
-            titles_to_replace = ["The Hitchhiker's Guide to the Galaxy", 'Outlander', 'The Color Purple']
-            new_image_url = 'http://images.amazon.com/images/P/0345339711.01.MZZZZZZZ.jpg'
-            books.loc[books['Book-Title'].isin(titles_to_replace), 'Image-URL-M'] = new_image_url
-
-           # These URLs aren't same size as other images
-            # new_urls = {
-            #     'The Hitchhiker\'s Guide to the Galaxy': 'https://m.media-amazon.com/images/I/51MzUz8rQcL._SY445_SX342_.jpg',
-            #     'Outlander': 'https://m.media-amazon.com/images/I/41YawkyLcwL._SY445_SX342_.jpg',
-            #     'The Color Purple': 'https://m.media-amazon.com/images/I/61y-b4SUdCL._SY445_SX342_.jpg'
-            # }
-            # books.loc[books['Book-Title'].isin(new_urls.keys()), 'Image-URL-M'] = books['Book-Title'].map(new_urls)
-
-
+           # Replace images for images whose links aren't working
+            new_urls = {
+                'The Hitchhiker\'s Guide to the Galaxy': 'https://m.media-amazon.com/images/I/51MzUz8rQcL._SY445_SX342_.jpg',
+                'Outlander': 'https://m.media-amazon.com/images/I/41YawkyLcwL._SY445_SX342_.jpg',
+                'The Color Purple': 'https://m.media-amazon.com/images/I/61y-b4SUdCL._SY445_SX342_.jpg'
+            }
+            books.loc[books['Book-Title'].isin(new_urls.keys()), 'Image-URL-M'] = books['Book-Title'].map(new_urls)
 
             # Read the Ratings.csv file
             ratings = pd.read_csv("notebook/data/Ratings.csv")

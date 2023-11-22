@@ -31,11 +31,6 @@ def cf_recommend():
         data = predict_pipeline.predict_collaborative(userInput)
         return render_template('recommend.html', data=data)
 
-
-
-
-
-
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
