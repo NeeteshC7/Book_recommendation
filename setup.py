@@ -19,8 +19,8 @@ def get_requirements_from_file(file_path: str) -> List[str]:
     return requirements
 
 setup(
-name='Book_recommendation',
-version='0.0.1',
+name='SwiftReads_Recommender',
+version='0.0.2',
 author='Neetesh Chauhan',
 author_email='neeteshchauhan3@gmail.com',
 packages=find_packages(),

@@ -1,11 +1,11 @@
 #book-image {
-  width: 700px;
+  width: 550px;
   border-radius: 2%;
   padding-right: 40px;
 }
 
 #image-container {
-  text-align: right;
+  text-align: center;
 }
 
 /* styles.css */
