@@ -5,15 +5,15 @@ from src.pipeline.predict_pipeline import PredictPipeline
 
 application=Flask(__name__)
 
-app=application
+application=application
 
 ## Route for a home page
 
-@app.route('/')
+@application.route('/')
 def index():
     return render_template('index.html') 
 
-@app.route('/popularbooks' ,methods=[ 'get','post'])
+@application.route('/popularbooks' ,methods=[ 'get','post'])
 def popular():
     top_predict_pipeline=PredictPipeline()
     book_name, author, image, votes, rating,year_publish = top_predict_pipeline.predict_popular()
@@ -21,7 +21,7 @@ def popular():
     return render_template('popular.html', book_name=book_name, author=author, image=image, votes=votes, rating=rating, year_publish=year_publish)
 
 
-@app.route('/recommend',methods=['GET','POST'])
+@application.route('/recommend',methods=['GET','POST'])
 def cf_recommend():
     if request.method == 'GET':
         return render_template('recommend.html')
@@ -31,9 +31,9 @@ def cf_recommend():
         data = predict_pipeline.predict_collaborative(userInput)
         return render_template('recommend.html', data=data)
 
-@app.route('/contact')
+@application.route('/contact')
 def contact():
     return render_template('contact.html')
 
-# if __name__=="__main__":
-#     app.run(host="0.0.0.0", debug=True) 
+if __name__=="__main__":
+    application.run(host="0.0.0.0") 
