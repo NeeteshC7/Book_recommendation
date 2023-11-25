@@ -63,16 +63,16 @@ The dataset, downloaded from Kaggle, underwent meticulous scrutiny for null valu
 
 - **Publication Insights 📚📆**
    - A dive into the temporal dimension reveals a spike in book publications in 2002. 
-   ![Books]()
+   ![Books](static/books.jpg)
   
 - **Authorship Marvels 🖋️🌟**
    - Agatha Christie emerges as the literary juggernaut, boasting a staggering 600+ books. 👏
    - William Shakespeare secures the second spot, joined by luminaries like Stephen King and Jane Austen.
-      ![Authors]()
+      ![Authors](static/authors.png)
 
 - **Publisher Prowess 🏭📖**
    - Harlequin Publishers stand tall, holding the record for the most books published. A nod to prolific storytelling! 📚
-   ![Publishers]()
+   ![Publishers](static/publishers.png)
 
 ### Popularity based recommender 🌟
 
@@ -98,9 +98,26 @@ Finally, predictions are done based on the name of the book provided.
 
 ### Workflow
 
+![workflow](static/workflow.png)
 
-## Project Structure
 ## Challenges & Next Steps
-## 🚀 About Me
 
+### Challenges
 
+One of the current challenges in the Popularity Recommender is the presence of repeated titles. Some books share alternate titles, resulting in duplication. The next steps involve addressing this issue to ensure a more accurate and streamlined recommendation experience.
+
+### Next Steps
+
+1. **Content-Based Recommender:**
+   
+Introduce a Content-Based Recommender to enhance the system's ability to suggest books based on their intrinsic features, providing a more personalized recommendation experience.
+
+2. **Genre-Based Sorting for Popular Books:**
+
+Implement a genre-based sorting mechanism for popular books. This enhancement will allow users to explore popular books within specific genres, catering to diverse preferences.
+
+3. **Hybrid Recommender System:**
+
+Develop a Hybrid Recommender System that combines the strengths of both collaborative filtering and content-based approaches. This integration aims to provide more robust and accurate recommendations, leveraging the strengths of different recommendation strategies.
+
+These next steps aim to not only resolve current challenges but also to elevate the recommendation system's functionality and user experience.
