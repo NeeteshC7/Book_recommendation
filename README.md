@@ -6,7 +6,23 @@ A book recommender which helps you start your reading journey again! Discover yo
 
 ## Demo
 
-Insert gif or link to demo
+### Screenshots
+
+This is the home page
+
+![home](demo_assets/demo_1.png)
+
+These are the fifty most poplar books
+
+![popular](demo_assets/demo_2.png)
+
+Enter a book name to get recommendations
+
+![search](demo_assets/demo_3.png)
+
+Top ten recommendations based on search query
+
+![results](demo_assets/demo_4.png)
 
 
 ## Introduction
@@ -64,18 +80,18 @@ The dataset, downloaded from Kaggle, underwent meticulous scrutiny for null valu
 - **Publication Insights 📚📆**
    - A dive into the temporal dimension reveals a spike in book publications in 2002.
     
-   ![Books](static/top_books.png)
+   ![Books](demo_assets/top_books.png)
   
 - **Authorship Marvels 🖋️🌟**
    - Agatha Christie emerges as the literary juggernaut, boasting a staggering 600+ books. 👏
    - William Shakespeare secures the second spot, joined by luminaries like Stephen King and Jane Austen.
 
-      ![Authors](static/authors.png)
+      ![Authors](demo_assets/authors.png)
 
 - **Publisher Prowess 🏭📖**
    - Harlequin Publishers stand tall, holding the record for the most books published. A nod to prolific storytelling! 📚
 
-   ![Publishers](static/publishers.png)
+   ![Publishers](demo_assets/publishers.png)
 
 ### Popularity based recommender 🌟
 
@@ -101,7 +117,7 @@ Finally, predictions are done based on the name of the book provided.
 
 ### Workflow
 
-![workflow](static/workflow.png)
+![workflow](demo_assets/workflow.png)
 
 ## Challenges & Next Steps
 
