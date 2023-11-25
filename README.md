@@ -6,7 +6,15 @@ A book recommender which helps you start your reading journey again! Discover yo
 
 ## Demo
 
-[SwiftReads_demo](https://github.com/NeeteshC7/SwiftReads_Recommender/assets/129514712/6df7ef10-747c-4a4d-8b64-a331087c8607)
+[SwiftReads_demo.webm](https://github.com/NeeteshC7/SwiftReads_Recommender/assets/129514712/141e1a09-ce7e-4ab4-97ff-62f5c3acb107)
+
+<br><br>
+
+👉👉👉 [Live Application](https://swiftreads-recommender.onrender.com) deployed on [Render](https://render.com) 🌐 🚀
+
+Feel free to play around and let us know what you think! If you encounter any issues or have suggestions, please open an [issue](https://github.com/NeeteshC7/SwiftReads_Recommender/issues) on GitHub.
+
+<br><br>
 
 ### Screenshots
 
@@ -120,6 +128,32 @@ Finally, predictions are done based on the name of the book provided.
 ### Workflow
 
 ![workflow](demo_assets/workflow.png)
+
+
+## Running Locally with Docker 🐳
+
+To run SwiftReads locally using Docker, follow these steps:
+
+1. Clone the Repository:
+   ```bash
+   git clone https://github.com/NeeteshC7/SwiftReads_Recommender.git
+   cd swiftreads
+   ```
+   
+2. Build the Docker Image:
+
+     ```bash
+        docker build -t swiftreads-recommender:latest .
+     ```
+    This command will build a Docker image for the SwiftReads    
+    Recommender.
+
+3. Run the Docker Container:
+
+    ```bash
+        docker run -p 5000:5000 swiftreads-recommender:latest
+    ```
+This command will start the SwiftReads Recommender application inside a Docker container, and you can access it at http://localhost:5000 in your web browser.
 
 ## Challenges & Next Steps
 
