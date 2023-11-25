@@ -6,6 +6,8 @@ A book recommender which helps you start your reading journey again! Discover yo
 
 ## Demo
 
+[SwiftReads_demo](https://github.com/NeeteshC7/SwiftReads_Recommender/assets/129514712/6df7ef10-747c-4a4d-8b64-a331087c8607)
+
 ### Screenshots
 
 This is the home page
