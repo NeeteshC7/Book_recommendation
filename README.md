@@ -62,16 +62,19 @@ The dataset, downloaded from Kaggle, underwent meticulous scrutiny for null valu
 **In Exploratory Data Analysis (EDA):**
 
 - **Publication Insights 📚📆**
-   - A dive into the temporal dimension reveals a spike in book publications in 2002. 
-   ![Books](static/books.jpg)
+   - A dive into the temporal dimension reveals a spike in book publications in 2002.
+    
+   ![Books](static/top_books.png)
   
 - **Authorship Marvels 🖋️🌟**
    - Agatha Christie emerges as the literary juggernaut, boasting a staggering 600+ books. 👏
    - William Shakespeare secures the second spot, joined by luminaries like Stephen King and Jane Austen.
+
       ![Authors](static/authors.png)
 
 - **Publisher Prowess 🏭📖**
    - Harlequin Publishers stand tall, holding the record for the most books published. A nod to prolific storytelling! 📚
+
    ![Publishers](static/publishers.png)
 
 ### Popularity based recommender 🌟
